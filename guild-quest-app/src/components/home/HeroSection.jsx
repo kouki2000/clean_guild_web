@@ -1,7 +1,7 @@
 const HeroSection = () => {
   return (
     <div className="relative min-h-screen overflow-hidden w-full">
-      <div className="absolute inset-0 bg-cover bg-center w-full h-full" style={{ backgroundImage: 'url(/images/hero/cleaning_with_robot.jpeg)' }}>
+      <div className="absolute inset-0 bg-cover bg-center w-full h-full" style={{ backgroundImage: 'url(./images/hero/cleaning_with_robot.jpeg)' }}>
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60"></div>
       </div>
       <header className="relative z-20 w-full">

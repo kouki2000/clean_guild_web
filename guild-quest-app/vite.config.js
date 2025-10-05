@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/clean_guild_web/', // リポジトリ名に合わせる
+  base: './', // 相対パスに変更
 })

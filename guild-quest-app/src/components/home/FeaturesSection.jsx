@@ -64,7 +64,7 @@ const FeaturesSection = () => {
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: 'url(/images/features/reception.jpeg)'
+          backgroundImage: 'url(./images/features/reception.jpeg)'
         }}
       >
         <div className="absolute inset-0 bg-black/50"></div>
