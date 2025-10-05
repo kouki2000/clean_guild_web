@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HamburgerMenu from './components/common/HamburgerMenu'
 import BackButton from './components/common/BackButton'
 import HeroSection from './components/home/HeroSection'
@@ -43,8 +43,11 @@ function StatsPage() {
 }
 
 function App() {
+  // GitHub Pagesのベースパスを自動検出
+  const basename = import.meta.env.BASE_URL || '/';
+
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <div className="w-full">
         <HamburgerMenu />
         <Routes>
