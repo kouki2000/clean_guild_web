@@ -4,7 +4,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-cover bg-center w-full h-full" style={{ backgroundImage: 'url(./images/hero/cleaning_with_robot.jpeg)' }}>
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60"></div>
       </div>
-      <header className="relative z-20 w-full">
+      {/* <header className="relative z-20 w-full">
         <nav className="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
             <div className="flex items-center gap-2 sm:gap-3">
@@ -21,7 +21,7 @@ const HeroSection = () => {
             <button className="lg:hidden text-white p-2"><svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg></button>
           </div>
         </nav>
-      </header>
+      </header> */}
       <div className="relative z-10 w-full px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center" style={{ minHeight: 'calc(100vh - 100px)' }}>
         <div className="text-center max-w-4xl mx-auto w-full">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-white bg-opacity-20 backdrop-blur-sm rounded-full text-white text-xs sm:text-sm font-semibold mb-6 sm:mb-8"><span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span><span className="hidden sm:inline">オンライン中の冒険者: 1,234名</span><span className="sm:hidden">冒険者: 1,234名</span></div>

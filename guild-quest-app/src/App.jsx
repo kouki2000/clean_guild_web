@@ -1,14 +1,58 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import HamburgerMenu from './components/common/HamburgerMenu'
 import HeroSection from './components/home/HeroSection'
 import FeaturesSection from './components/home/FeaturesSection'
 import Footer from './components/common/Footer'
 
-function App() {
+// ホームページ
+function HomePage() {
   return (
-    <div className="w-full">
+    <>
       <HeroSection />
       <FeaturesSection />
       <Footer />
+    </>
+  )
+}
+
+// 仮のページ（後で実装）
+function QuestsPage() {
+  return (
+    <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center">
+      <h1 className="text-4xl font-bold">QUESTS PAGE</h1>
     </div>
+  )
+}
+
+function MapPage() {
+  return (
+    <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center">
+      <h1 className="text-4xl font-bold">MAP PAGE</h1>
+    </div>
+  )
+}
+
+function StatsPage() {
+  return (
+    <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center">
+      <h1 className="text-4xl font-bold">STATS PAGE</h1>
+    </div>
+  )
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <div className="w-full">
+        <HamburgerMenu />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/quests" element={<QuestsPage />} />
+          <Route path="/map" element={<MapPage />} />
+          <Route path="/stats" element={<StatsPage />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   )
 }
 
