@@ -43,11 +43,8 @@ function StatsPage() {
 }
 
 function App() {
-  // GitHub Pagesのベースパスを自動検出
-  const basename = import.meta.env.BASE_URL || '/';
-
   return (
-    <BrowserRouter basename={basename}>
+    <BrowserRouter>
       <div className="w-full">
         <HamburgerMenu />
         <Routes>
