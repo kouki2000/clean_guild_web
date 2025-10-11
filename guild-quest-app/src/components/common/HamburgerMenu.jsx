@@ -4,67 +4,91 @@ import { Link } from 'react-router-dom';
 const HamburgerMenu = () => {
     const [isOpen, setIsOpen] = useState(false);
 
-    const toggleMenu = () => {
-        setIsOpen(!isOpen);
-    };
+    const menuItems = [
+        { name: 'ホーム', path: '/', icon: '🏠' },
+        { name: '機能紹介', path: '#features', icon: '⚡' },
+        { name: 'クエスト', path: '#quests', icon: '⚔️' },
+        { name: 'ダウンロード', path: '#download', icon: '📱' },
+    ];
 
-    const closeMenu = () => {
+    const handleClick = (path) => {
         setIsOpen(false);
+
+        // アンカーリンクの場合はスムーススクロール
+        if (path.startsWith('#')) {
+            const element = document.querySelector(path);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
     };
 
     return (
-        <div>
+        <>
+            {/* ハンバーガーボタン */}
             <button
-                onClick={toggleMenu}
-                className="fixed top-6 right-6 z-50 w-12 h-12 flex flex-col items-center justify-center gap-1.5"
+                onClick={() => setIsOpen(!isOpen)}
+                className="fixed top-6 right-6 z-50 bg-gray-900/80 hover:bg-gray-800/80 backdrop-blur-md text-white p-3 rounded-full shadow-2xl transition-all duration-300"
+                aria-label="メニュー"
             >
-                <span className={`block w-8 h-0.5 bg-white transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-                <span className={`block w-8 h-0.5 bg-white transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`}></span>
-                <span className={`block w-8 h-0.5 bg-white transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+                <div className="w-6 h-6 flex flex-col justify-center items-center">
+                    <span
+                        className={`block w-6 h-0.5 bg-white transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-1.5' : 'mb-1'
+                            }`}
+                    />
+                    <span
+                        className={`block w-6 h-0.5 bg-white transition-all duration-300 ${isOpen ? 'opacity-0' : 'mb-1'
+                            }`}
+                    />
+                    <span
+                        className={`block w-6 h-0.5 bg-white transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-1.5' : ''
+                            }`}
+                    />
+                </div>
             </button>
 
-            <div className={`fixed inset-0 bg-gray-900 z-40 transition-all duration-500 ${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
-                <div className="h-full flex flex-col items-center justify-center relative">
-                    <div className="absolute top-6 left-6 flex items-center gap-3">
-                        <div className="w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-500 rounded-xl flex items-center justify-center text-2xl">
-                            ⚔️
-                        </div>
-                        <span className="text-xl font-bold text-white">GUILD QUEST</span>
-                    </div>
+            {/* オーバーレイ */}
+            {isOpen && (
+                <div
+                    className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 transition-opacity duration-300"
+                    onClick={() => setIsOpen(false)}
+                />
+            )}
 
-                    <nav className="space-y-8 text-center">
-                        <Link to="/" onClick={closeMenu} className="block text-4xl sm:text-5xl font-bold text-amber-400 hover:text-amber-300 transition-all">
-                            HOME
-                        </Link>
-                        <Link to="/quests" onClick={closeMenu} className="block text-4xl sm:text-5xl font-bold text-white hover:text-amber-400 transition-all">
-                            QUESTS
-                        </Link>
-                        <Link to="/map" onClick={closeMenu} className="block text-4xl sm:text-5xl font-bold text-white hover:text-amber-400 transition-all">
-                            MAP
-                        </Link>
-                        <Link to="/stats" onClick={closeMenu} className="block text-4xl sm:text-5xl font-bold text-white hover:text-amber-400 transition-all relative inline-block">
-                            STATS
-                            <span className="absolute -top-2 -right-8 bg-amber-500 text-white text-sm rounded-full w-7 h-7 flex items-center justify-center border-2 border-white">2</span>
-                        </Link>
+            {/* メニュー */}
+            <div
+                className={`fixed top-0 right-0 h-full w-80 bg-gradient-to-b from-gray-900 via-purple-900 to-gray-900 shadow-2xl z-40 transform transition-transform duration-300 ${isOpen ? 'translate-x-0' : 'translate-x-full'
+                    }`}
+            >
+                <div className="p-8 pt-24">
+                    <nav className="space-y-2">
+                        {menuItems.map((item) => (
+                            item.path.startsWith('#') ? (
+                                <a
+                                    key={item.name}
+                                    href={item.path}
+                                    onClick={() => handleClick(item.path)}
+                                    className="flex items-center gap-4 px-6 py-4 text-white hover:bg-white/10 rounded-xl transition-all duration-200 text-lg font-semibold"
+                                >
+                                    <span className="text-2xl">{item.icon}</span>
+                                    {item.name}
+                                </a>
+                            ) : (
+                                <Link
+                                    key={item.name}
+                                    to={item.path}
+                                    onClick={() => handleClick(item.path)}
+                                    className="flex items-center gap-4 px-6 py-4 text-white hover:bg-white/10 rounded-xl transition-all duration-200 text-lg font-semibold"
+                                >
+                                    <span className="text-2xl">{item.icon}</span>
+                                    {item.name}
+                                </Link>
+                            )
+                        ))}
                     </nav>
-
-                    <div className="absolute bottom-12 flex gap-6">
-                        <a href="#" className="w-12 h-12 flex items-center justify-center bg-white bg-opacity-10 rounded-lg hover:bg-opacity-20 transition-all">
-                            <span className="text-white text-xl">𝕏</span>
-                        </a>
-                        <a href="#" className="w-12 h-12 flex items-center justify-center bg-white bg-opacity-10 rounded-lg hover:bg-opacity-20 transition-all">
-                            <span className="text-white text-xl">📷</span>
-                        </a>
-                        <a href="#" className="w-12 h-12 flex items-center justify-center bg-white bg-opacity-10 rounded-lg hover:bg-opacity-20 transition-all">
-                            <span className="text-white text-xl">💼</span>
-                        </a>
-                        <a href="#" className="w-12 h-12 flex items-center justify-center bg-white bg-opacity-10 rounded-lg hover:bg-opacity-20 transition-all">
-                            <span className="text-white text-xl">▶️</span>
-                        </a>
-                    </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 

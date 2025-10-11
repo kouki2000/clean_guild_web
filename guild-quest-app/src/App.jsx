@@ -5,7 +5,7 @@ import BackButton from './components/common/BackButton'
 import Footer from './components/common/Footer'
 import HeroSection from './components/home/HeroSection'
 import FeaturesSection from './components/home/FeaturesSection'
-import QuestsPage from './pages/QuestsPage'  // ← これを追加
+import QuestsShowcase from './components/home/QuestsShowcase'
 
 function HomePage() {
   const { isApp } = usePlatform();
@@ -14,15 +14,22 @@ function HomePage() {
     <div className={isApp ? 'pb-20' : ''}>
       <HeroSection />
       <FeaturesSection />
+      <QuestsShowcase />
       {!isApp && <Footer />}
     </div>
   )
 }
 
-// ← この古いQuestsPage関数を削除
-// function QuestsPage() {
-//   ...
-// }
+function QuestsPage() {
+  const { isApp } = usePlatform();
+
+  return (
+    <div className={`min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 text-white flex items-center justify-center ${isApp ? 'pb-20' : ''}`}>
+      <BackButton />
+      <h1 className="text-4xl font-bold">QUESTS PAGE</h1>
+    </div>
+  )
+}
 
 function MapPage() {
   const { isApp } = usePlatform();
