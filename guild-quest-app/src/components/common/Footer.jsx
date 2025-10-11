@@ -72,7 +72,7 @@ const Footer = () => {
                             <div className="w-10 h-10 bg-gradient-to-br from-amber-400 to-orange-500 rounded-lg flex items-center justify-center text-xl">
                                 ⚔️
                             </div>
-                            <span className="text-xl font-bold">GUILD QUEST</span>
+                            <span className="text-xl font-bold">CLEANING GUILD</span>
                         </div>
 
                         {/* リンク */}
@@ -83,7 +83,7 @@ const Footer = () => {
 
                         {/* コピーライト */}
                         <div className="text-sm text-gray-400">
-                            ©2025 Guild Quest. All Rights Reserved.
+                            ©2025 CLEANING GUILD. All Rights Reserved.
                         </div>
                     </div>
                 </div>
